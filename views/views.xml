@@ -1,0 +1,6 @@
+<odoo>
+  <data>
+            <menuitem name="Job Courses" id="jobcourses.menu_root" sequence="1" active="True"/>
+
+  </data>
+</odoo>

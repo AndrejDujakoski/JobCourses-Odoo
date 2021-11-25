@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <report
+        id="report_student_card"
+        string="Student Grades"
+        model="model.student"
+        report_type="qweb-pdf"
+        name="jobcourses.report_student_grades"
+        file="jobcourses.report_student_grades"
+
+    />
+
+
+</odoo>

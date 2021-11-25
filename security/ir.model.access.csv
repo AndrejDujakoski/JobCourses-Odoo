@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+student_jobmanager,student manager,model_model_student,jobcourses_manager_group,1,1,1,1
+teacher_jobmanager,teacher manager,model_model_teacher,jobcourses_manager_group,1,1,1,1
+courses_jobmanager,courses manager,model_model_courses,jobcourses_manager_group,1,1,1,1
+grades_insert_jobmanager,grades insert manager,model_transmodel_insertgrades,jobcourses_manager_group,1,1,1,1
+grades_jobmanager,grades manager,model_model_grades,jobcourses_manager_group,1,1,1,1
+
+student_jobread_all,students all,model_model_student,,1,0,0,0
+teacher_jobread_all,teacher all,model_model_teacher,,1,0,0,0
+courses_jobread_all,courses all,model_model_courses,,1,0,0,0
+grades_insert_jobreadall,grades insert all,model_transmodel_insertgrades,,1,0,0,0
+grades_jobreadall,grades readall,model_model_grades,,1,0,0,0
+
+
+

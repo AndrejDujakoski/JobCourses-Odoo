@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record model="ir.actions.act_window" id="courses_list_action">
+        <field name="name">Courses</field>
+        <field name="res_model">model.courses</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Add the first course</p>
+        </field>
+    </record>
+
+    <record id="courses_form_view" model="ir.ui.view">
+        <field name="name">Courses</field>
+        <field name="model">model.courses</field>
+
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                  <field name="state" widget="statusbar" clickable="True"/>
+
+                    <button name="change_status_draft" groups="jobcourses.jobcourses_manager_group" type="object" class="btn-primary" string="Draft"/>
+                    <button name="change_status_open" groups="jobcourses.jobcourses_manager_group" type="object" class="btn-primary" string="Open"/>
+                    <button name="change_status_finished" groups="jobcourses.jobcourses_manager_group" type="object" class="btn-primary" string="Finished"/>
+                    <button name="%(jobcourses.insert_grades_wizard)d" groups="jobcourses.jobcourses_manager_group"
+                            type="action" class="btn-primary" string="Insert Grades"
+                            attrs="{'invisible': [('state', '==', 'finished')]}"/>
+
+                    <button name="insert_grades" groups="jobcourses.jobcourses_manager_group" type="object" class="btn-primary"
+                            attrs="{'invisible': [('state', '==', 'finished')]}" string="Insert Grades Courses_func"/>
+
+                    <button name="copy_course_draft" groups="jobcourses.jobcourses_manager_group" type="object" class="btn-primary" string="Copy Course"/>
+
+                </header>
+                <sheet>
+                    <div>
+                        <h1>
+                            <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </h1>
+                    </div>
+
+                    <group>
+
+                        <field name="teacher" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="field_of_study" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                        <field name="semester" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    </group>
+                    <group>
+                        <field name="description" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                    </group>
+                    <group>
+                        <field name="beginning_date" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                        <field name="end_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    </group>
+                    <group>
+                        <field name="students" widget="many2many_tags" options="{'no_create': True}"
+                               attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    </group>
+                    <group>
+                        <field name="document" filename="document_name"
+                        attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="document_name" invisible="1"
+                        attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+        <menuitem id="courses_menu" name="Courses" parent="jobcourses.menu_root" action="courses_list_action"/>
+</odoo>
